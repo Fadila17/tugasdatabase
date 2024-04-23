@@ -232,9 +232,43 @@ SELECT id, kode, nama,
 
 Soal 3.4
 1.	Tampilkan data statistik jumlah tempat lahir pelanggan
+ SELECT tmp_lahir, COUNT(id) AS Jumlah_Pelanggan FROM pelanggan GROUP BY tmp_lahir;
++------------+------------------+
+| tmp_lahir  | Jumlah_Pelanggan |
++------------+------------------+
+| Belfast    |                1 |
+| Jakarta    |                3 |
+| Kediri     |                2 |
+| Pati       |                1 |
+| Solo       |                1 |
+| Surabaya   |                2 |
+| Tangerang  |                1 |
+| Yogyakarta |                1 |
++------------+------------------+
+
 2.	Tampilkan jumlah statistik produk berdasarkan jenis produk
+SELECT
+    -> CASE
+    -> WHEN jenis_produk_id = 1 THEN 'Elektronik'
+    -> WHEN jenis_produk_id = 2 THEN 'Furniture'
+    -> WHEN jenis_produk_id = 3 THEN 'Makanan'
+    -> ELSE 'Minuman'
+    -> END AS Katergori, SUM(stok) AS jumlah FROM produk GROUP BY jenis_produk_id;
++------------+--------+
+| Katergori  | jumlah |
++------------+--------+
+| Elektronik |     75 |
+| Furniture  |      4 |
+| Minuman    |     89 |
+| Minuman    |     25 |
++------------+--------+
+
 3.	Tampilkan data pelanggan yang usianya dibawah rata usia pelanggan
+
 4.	Tampilkan data produk yang harganya diatas rata-rata harga produk
+
 5.	Tampilkan data pelanggan yang memiliki kartu dimana iuran tahunan kartu diatas 90rb
+
 6.	Tampilkan statistik data produk dimana harga produknya dibawah rata-rata harga produk secara keseluruhan
+
 7.	Tampilkan data pelanggan yang memiliki kartu dimana diskon kartu yang diberikan diatas 3%
